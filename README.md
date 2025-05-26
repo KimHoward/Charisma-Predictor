@@ -8,7 +8,8 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 ## 🚀 Highlights
 
-* 🎥 Video: facial landmark tracking via MediaPipe + LSTM/GRU/CNN-based sequence models
+* 🎥 Video: facial landmark tracking via MediaPipe + five sequence models (CNN, LSTM, GRU, Transformer, TCN)
+* 🤖 Video outputs ensembled via weighted averaging (best MAE: 0.1189)
 * 🔀 Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
 * 📈 Output: Big Five personality prediction + charisma score ∈ \[0, 1] with classification (Very Low → Very High)
 * 📊 Visualization of leadership score distribution and model performance
@@ -32,7 +33,7 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 This repository reflects the parts of the project I directly implemented:
 
-* Developed the full **video model** pipeline: feature extraction, model design (LSTM, GRU, CNN), training and evaluation
+* Developed the full **video model** pipeline: feature extraction, five-model architecture (CNN, LSTM, GRU, Transformer, TCN), ensemble fusion, evaluation
 * Designed and implemented **fusion logic**, including simple averaging, weighted fusion, and trait-specific MCWF
 * Developed the charisma scoring system based on normalized Big Five correlations
 * Produced evaluation results, metrics, and visualizations (e.g., final histograms)
@@ -43,7 +44,7 @@ This repository reflects the parts of the project I directly implemented:
 
 ```
 charisma-predictor/
-├── video_model/            # My code for facial landmark + sequence model
+├── video_model/            # My code for facial landmark + sequence model ensemble
 ├── fusion/                 # My code for fusion logic (weighted avg, MCWF)
 ├── figures/                # Output plots (confusion matrices, histograms)
 ├── results/                # Personality predictions + charisma scores
@@ -84,7 +85,7 @@ python fusion/run_mcwf.py
 
 ## 🧠 Methodology Summary
 
-* Video: MediaPipe landmark sequences → LSTM/GRU/CNN → Big Five scores
+* Video: MediaPipe landmark sequences → five models (CNN, LSTM, GRU, Transformer, TCN) → trait-level scores → ensembled via weighted average
 * Audio/Text: pretrained AST / BERT models → Big Five scores (via linked repos)
 * Fusion: average, weighted, MCWF → leadership score mapping (0–1)
 * Classification into 5 buckets: Very Low → Very High suitability
