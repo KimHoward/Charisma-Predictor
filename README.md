@@ -24,7 +24,7 @@ This repository contains the parts I personally developed: the **video model**, 
 
 ![Leadership Histogram](figures/Leadership_Suitability_Distribution_true_label_vs_prediction.png)
 
-The fusion output shows high alignment between predicted and true leadership scores, confirming the effectiveness of cross-modal aggregation.
+> The fusion output shows high alignment between predicted and true leadership scores, confirming the effectiveness of cross-modal aggregation.
 
 **Fusion Model Personality Accuracy (MCWF):**
 
