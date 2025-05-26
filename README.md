@@ -21,11 +21,11 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 **Leadership Suitability Distribution:**
 
-![Leadership Histogram](figures/Leadership Suitability Distribution, true label vs. prediction.png)
+![Leadership Histogram](figures/Leadership_Suitability_Distribution_true_label_vs_prediction.png)
 
 **Fusion Model Personality Accuracy (MCWF):**
 
-![Fusion Confusion Matrix](figures/confusion matrics_fusion.jpg)
+![Fusion Confusion Matrix](figures/confusion_matrics_fusion.jpg)
 
 ---
 
