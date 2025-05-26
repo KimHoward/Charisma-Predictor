@@ -2,6 +2,8 @@
 
 This project builds a multi-modal AI pipeline to estimate **Big Five personality traits** from **audio, video, and text**, and to map those traits to a **charismatic leadership score**. It was developed as part of an MSc AI group project at Maastricht University.
 
+> This GitHub contains only the video and fusion components of a multimodal leadership prediction system developed as part of a group project.
+
 🧠 This GitHub repository includes **only the parts I personally implemented**: the **video model**, the **fusion system**, and the **leadership scoring + visualization**.
 
 ---
@@ -12,6 +14,7 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 * 🤖 Video outputs ensembled via weighted averaging (best MAE: 0.1189)
 * 🔀 Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
 * 📈 Output: Big Five personality prediction + charisma score ∈ \[0, 1] with classification (Very Low → Very High)
+* ⚙️ Optimization: early stopping, learning rate scheduling (ReduceLROnPlateau)
 * 📊 Visualization of leadership score distribution and model performance
 * ✅ Achieved up to **92.45% accuracy** on Big Five personality traits via fusion model (MCWF)
 
@@ -23,9 +26,11 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 ![Leadership Histogram](figures/Leadership_Suitability_Distribution_true_label_vs_prediction.png)
 
+> The fused output shows a strong correlation between predicted and true leadership suitability scores, confirming effective personality aggregation from all modalities.
+
 **Fusion Model Personality Accuracy (MCWF):**
 
-![Fusion Confusion Matrix](figures/confusion_matrics_fusion.jpg)
+![Fusion Confusion Matrix](figures/confusion_matrix_fusion.jpg)
 
 ---
 
