@@ -30,7 +30,7 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 **Fusion Model Personality Accuracy (MCWF):**
 
-![Fusion Confusion Matrix](figures/confusion_matrix_fusion.jpg)
+![Fusion Confusion Matrix](figures/confusion_matrics_fusion.jpg)
 
 ---
 
