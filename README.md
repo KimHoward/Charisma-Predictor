@@ -12,6 +12,7 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 * 🔀 Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
 * 📈 Output: Big Five personality prediction + charisma score ∈ \[0, 1] with classification (Very Low → Very High)
 * 📊 Visualization of leadership score distribution and model performance
+* ✅ Achieved up to **92.45% accuracy** on Big Five personality traits via fusion model (MCWF)
 
 ---
 
