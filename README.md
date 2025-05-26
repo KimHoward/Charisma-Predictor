@@ -1,22 +1,20 @@
 # Charisma-Predictor: Multi-Modal AI for Personality & Leadership Assessment
 
-This project builds a multi-modal AI pipeline to estimate **Big Five personality traits** from **audio, video, and text**, and to map those traits to a **charismatic leadership score**. It was developed as part of an MSc AI group project at Maastricht University.
+**Charisma-Predictor** is a multimodal AI pipeline developed as part of a Master's research project in Artificial Intelligence at Maastricht University. It received a final grade of **8.5 / 10**, based on methodology, implementation, and evaluation.
 
-> This GitHub contains only the video and fusion components of a multimodal leadership prediction system developed as part of a group project.
-
-🧠 This GitHub repository includes **only the parts I personally implemented**: the **video model**, the **fusion system**, and the **leadership scoring + visualization**.
+This repository contains the parts I personally developed: the **video model**, the **fusion logic**, and the **charisma scoring and visualization**.
 
 ---
 
 ## 🚀 Highlights
 
 * 🎥 Video: facial landmark tracking via MediaPipe + five sequence models (CNN, LSTM, GRU, Transformer, TCN)
-* 🤖 Video outputs ensembled via weighted averaging (best MAE: 0.1189)
-* 🔀 Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
-* 📈 Output: Big Five personality prediction + charisma score ∈ \[0, 1] with classification (Very Low → Very High)
+* 🤖 Ensemble: video outputs fused via weighted averaging (best MAE: 0.1189)
+* ⚐️ Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
+* 📊 Output: Big Five personality prediction + charisma score ∈ \[0, 1], classified into five levels
 * ⚙️ Optimization: early stopping, learning rate scheduling (ReduceLROnPlateau)
-* 📊 Visualization of leadership score distribution and model performance
-* ✅ Achieved up to **92.45% accuracy** on Big Five personality traits via fusion model (MCWF)
+* 📊 Visuals: leadership score distribution, confusion matrices
+* ✅ Achieved up to **92.45% accuracy** on Big Five prediction via fusion (MCWF)
 
 ---
 
@@ -26,7 +24,7 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 ![Leadership Histogram](figures/Leadership_Suitability_Distribution_true_label_vs_prediction.png)
 
-> The fused output shows a strong correlation between predicted and true leadership suitability scores, confirming effective personality aggregation from all modalities.
+The fusion output shows high alignment between predicted and true leadership scores, confirming the effectiveness of cross-modal aggregation.
 
 **Fusion Model Personality Accuracy (MCWF):**
 
@@ -36,26 +34,26 @@ This project builds a multi-modal AI pipeline to estimate **Big Five personality
 
 ## 👤 My Contribution
 
-This repository reflects the parts of the project I directly implemented:
+This repository reflects my direct contributions to the project:
 
-* Developed the full **video model** pipeline: feature extraction, five-model architecture (CNN, LSTM, GRU, Transformer, TCN), ensemble fusion, evaluation
-* Designed and implemented **fusion logic**, including simple averaging, weighted fusion, and trait-specific MCWF
-* Developed the charisma scoring system based on normalized Big Five correlations
-* Produced evaluation results, metrics, and visualizations (e.g., final histograms)
+* Developed the full **video model pipeline**: feature extraction, five-model ensemble, evaluation
+* Designed and implemented **fusion logic**, including MCWF and weighted fusion strategies
+* Created the **charisma scoring system** using normalized Big Five trait correlations
+* Generated final evaluation metrics, plots, and analysis outputs
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
 charisma-predictor/
-├── video_model/            # My code for facial landmark + sequence model ensemble
-├── fusion/                 # My code for fusion logic (weighted avg, MCWF)
+├── video_model/            # Facial landmark + sequence model ensemble
+├── fusion/                 # Fusion logic (weighted avg, MCWF)
 ├── figures/                # Output plots (confusion matrices, histograms)
 ├── results/                # Personality predictions + charisma scores
-├── text_and_audio/         # References to group members' implementations
-│   └── README.md           # External links only (not my code)
-├── report_links/           # Final team report PDF link
+├── text_and_audio/         # External references to group members' models
+│   └── README.md
+├── report_links/           # Final report (PDF)
 │   └── README.md
 ├── README.md               # You're reading it
 └── requirements.txt
@@ -63,46 +61,40 @@ charisma-predictor/
 
 ---
 
-## 📎 Related Work by Team Members
+## 📅 Related Work by Team Members
 
-While I did not implement the audio and text models, they contributed to the fusion output. You can find their work here:
+While this repo focuses on my implementation, the final fusion model also incorporated audio and text inputs from teammates:
 
 * 📄 [Full project report (PDF)](https://drive.google.com/file/d/1LQnHQryJfcT02PuWKHqSIbIRdy0jVY7T/view?usp=sharing)
-* 🔊 [Audio model code & description](https://drive.google.com/drive/folders/1SoNqgf6J3f-QCa_LvFf0fSnW1xZLOgCV?usp=drive_link)
-* 📝 [Text model code & description](https://drive.google.com/drive/folders/1npBfmOsTbw5ziEsa_PnD_drb8xST2BSP?usp=drive_link)
+* 🔊 [Audio model (AST)](https://drive.google.com/drive/folders/1SoNqgf6J3f-QCa_LvFf0fSnW1xZLOgCV?usp=drive_link)
+* 📄 [Text model (BERT)](https://drive.google.com/drive/folders/1npBfmOsTbw5ziEsa_PnD_drb8xST2BSP?usp=drive_link)
 
 ---
 
 ## 🛠️ Run the Fusion Module
 
+This repository includes the training code for the fusion model. To train the Multi-Channel Weighted Fusion (MCWF) model:
+
 ```bash
 pip install -r requirements.txt
-python fusion/run_mcwf.py
+cd fusion
+python train_fusion.py
 ```
 
 ---
 
-## 📄 Dataset
+## 🗋 Dataset
 
 * [First Impressions Dataset](https://chalearnlap.cvc.uab.cat/dataset/20/description/) – 10,000 annotated video clips
 
 ---
 
-## 🧠 Methodology Summary
+## 🤓 Methodology Summary
 
-* Video: MediaPipe landmark sequences → five models (CNN, LSTM, GRU, Transformer, TCN) → trait-level scores → ensembled via weighted average
-* Audio/Text: pretrained AST / BERT models → Big Five scores (via linked repos)
-* Fusion: average, weighted, MCWF → leadership score mapping (0–1)
-* Classification into 5 buckets: Very Low → Very High suitability
+**Model Workflow Overview:**
 
----
-
-## 📌 Final Grade
-
-This project received a final mark of **8.5 / 10**.
-
----
-
-## ⚠️ Disclaimer
-
-This repository contains only the work I personally implemented. Please refer to linked resources for other group contributions.
+* 🎥 **Video:** MediaPipe landmark sequences → five-model ensemble (CNN, LSTM, GRU, Transformer, TCN)
+* 🔊 **Audio:** AST + Random Forest (team contribution)
+* 📑 **Text:** BERT-based personality estimation (team contribution)
+* ♻️ **Fusion:** Average, weighted, MCWF
+* 🧠 **Output:** Big Five scores → 0–1 charisma score → five-class suitability label
