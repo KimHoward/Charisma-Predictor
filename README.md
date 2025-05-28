@@ -8,13 +8,13 @@ This repository contains the parts I personally developed: the **video model**, 
 
 ## 🚀 Highlights
 
-* 🎥 Video: facial landmark tracking via MediaPipe + five sequence models (CNN, LSTM, GRU, Transformer, TCN)
-* 🤖 Ensemble: video outputs fused via weighted averaging (best MAE: 0.1189)
-* ⚐️ Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
-* 📊 Output: Big Five personality prediction + charisma score ∈ \[0, 1], classified into five levels
-* ⚙️ Optimization: early stopping, learning rate scheduling (ReduceLROnPlateau)
-* 📊 Visuals: leadership score distribution, confusion matrices
-* ✅ Achieved up to **92.45% accuracy** on Big Five prediction via fusion (MCWF)
+*   Video: facial landmark tracking via MediaPipe + five sequence models (CNN, LSTM, GRU, Transformer, TCN)
+*   Ensemble: video outputs fused via weighted averaging (best MAE: 0.1189)
+*   Fusion: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
+*   Output: Big Five personality prediction + charisma score ∈ \[0, 1], classified into five levels
+*   Optimization: early stopping, learning rate scheduling (ReduceLROnPlateau)
+*   Visuals: leadership score distribution, confusion matrices
+*   Achieved up to **92.45% accuracy** on Big Five prediction via fusion (MCWF)
 
 ---
 
